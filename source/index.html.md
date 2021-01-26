@@ -685,3 +685,121 @@ Items that are part of the Order. An Order must contain at least one item.
 
 ### Returns
 An [Order](#the-order-object) object.
+
+
+## Retrieve an Order
+
+Retrieves an existing Order object.
+
+> GET /v1/orders/:id
+
+```shell
+curl https://api.windspeed.io/v1/orders/24f0acc0-3d8e-493e-9a99-bd3c4d5c85fb \
+  -X GET \
+  -H "Authorization: Token YOUR-API-TOKEN"
+```
+
+```python
+import requests
+
+response = requests.get("https://api.windspeed.io/v1/orders/24f0acc0-3d8e-493e-9a99-bd3c4d5c85fb",
+                          headers={"Authorization": "Token YOUR-API-TOKEN"})
+```
+
+```javascript
+const axios = require('axios');
+
+axios.get("https://api.windspeed.io/v1/orders/24f0acc0-3d8e-493e-9a99-bd3c4d5c85fb", {
+    headers: {
+      "Authorization": "Token YOUR-API-TOKEN"
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(err);
+  });
+```
+
+
+> RESPONSE
+
+```json
+{
+  "id": "24f0acc0-3d8e-493e-9a99-bd3c4d5c85fb",
+  "custom_id": "ORDER00001",
+  "tracking_id": "MTOYNGYWYWNJMC0ZZDHLLTQ5M2UTOWE5OS1IZDNJNGQ1YZG1ZMIW",
+  "company": 342,
+  "company_name": "Summer Florals Co.",
+  "delivery_address": "10 Bayfront Ave, Singapore 018956",
+  "delivery_timeslot": {
+    "lower": "2020-07-24T06:00:00Z",
+    "upper": "2020-07-24T09:00:00Z",
+    "bounds": "[)"
+  },
+  "sender_name": "John Doe",
+  "sender_email": "john@example.org",
+  "sender_contact": "91234567",
+  "removed": null,
+  "recipient_name": "Jane Smith",
+  "recipient_contact": "97654321",
+  "notes": "Make sure it is an anonymous delivery please.",
+  "items": [
+    {
+      "id": 67184,
+      "name": "Custom Bouquet",
+      "quantity": 1,
+      "metadata": {},
+      "removed": null
+    }
+  ],
+  "latitude": "1.285285460109807",
+  "longitude": "103.86083121238575",
+  "created": "2020-07-20T06:49:17.587611Z",
+  "updated": "2020-07-20T06:49:17.587638Z",
+  "status": "pending",
+  "verbose_status": "Pending",
+  "logs": [
+    {
+      "id": 185786,
+      "order": "24f0acc0-3d8e-493e-9a99-bd3c4d5c85fb",
+      "order_custom_id": "ORDER00001",
+      "order_delivery_address": "10 Bayfront Ave, Singapore 018956",
+      "order_delivery_timeslot": {
+        "lower": "2020-07-24T06:00:00Z",
+        "upper": "2020-07-24T09:00:00Z",
+        "bounds": "[)"
+      },
+      "message": "Order was created.",
+      "failure_reason": null,
+      "success_code": null,
+      "success_description": null,
+      "created": "2020-07-20T06:49:17.658913Z",
+      "removed": null
+    },
+    {
+      "id": 185787,
+      "order": "24f0acc0-3d8e-493e-9a99-bd3c4d5c85fb",
+      "order_custom_id": "ORDER00001",
+      "order_delivery_address": "10 Bayfront Ave, Singapore 018956",
+      "order_delivery_timeslot": {
+        "lower": "2020-07-24T06:00:00Z",
+        "upper": "2020-07-24T09:00:00Z",
+        "bounds": "[)"
+      },
+      "message": "Order is pending.",
+      "failure_reason": null,
+      "success_code": null,
+      "success_description": null,
+      "created": "2020-07-20T06:49:17.754210Z",
+      "removed": null
+    }
+  ],
+  "reschedule_requests": [],
+  "signature": null
+}
+```
+
+### Returns
+An [Order](#the-order-object) object.
